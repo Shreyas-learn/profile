@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shreyas | CSE Student</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #0b1120;
+      color: #e5e7eb;
+      line-height: 1.6;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 8%;
+      background: rgba(11, 17, 32, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #60a5fa;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    nav a {
+      color: #d1d5db;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #60a5fa;
+    }
+
+    /* Hero */
+    #home {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 100px 8% 60px;
+      background:
+        radial-gradient(circle at 80% 30%, rgba(37,99,235,0.2), transparent 35%),
+        radial-gradient(circle at 20% 80%, rgba(124,58,237,0.15), transparent 30%);
+    }
+
+    .hero {
+      max-width: 850px;
+    }
+
+    .hero span {
+      color: #60a5fa;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 8vw, 6rem);
+      line-height: 1.05;
+      margin: 15px 0;
+    }
+
+    .hero h1 strong {
+      color: #60a5fa;
+    }
+
+    .hero p {
+      max-width: 650px;
+      color: #9ca3af;
+      font-size: 1.15rem;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .primary {
+      background: #2563eb;
+      color: white;
+    }
+
+    .primary:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+    }
+
+    .secondary {
+      border: 1px solid #374151;
+      color: #e5e7eb;
+    }
+
+    .secondary:hover {
+      border-color: #60a5fa;
+      color: #60a5fa;
+    }
+
+    /* Sections */
+    section {
+      padding: 100px 8%;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      margin-bottom: 40px;
+      color: white;
+    }
+
+    .section-title::after {
+      content: "";
+      display: block;
+      width: 50px;
+      height: 4px;
+      margin-top: 10px;
+      background: #2563eb;
+      border-radius: 5px;
+    }
+
+    /* About */
+    .about {
+      max-width: 850px;
+      color: #9ca3af;
+      font-size: 1.05rem;
+    }
+
+    /* Skills */
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .skill {
+      padding: 12px 20px;
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 8px;
+      color: #dbeafe;
+      transition: 0.3s;
+    }
+
+    .skill:hover {
+      border-color: #3b82f6;
+      transform: translateY(-3px);
+    }
+
+    /* Projects */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+    }
+
+    .project {
+      background: #111827;
+      border: 1px solid #1f2937;
+      padding: 28px;
+      border-radius: 12px;
+      transition: 0.3s;
+    }
+
+    .project:hover {
+      transform: translateY(-6px);
+      border-color: #2563eb;
+    }
+
+    .project h3 {
+      color: white;
+      margin-bottom: 12px;
+    }
+
+    .project p {
+      color: #9ca3af;
+      margin-bottom: 15px;
+    }
+
+    .project a {
+      color: #60a5fa;
+      text-decoration: none;
+    }
+
+    /* Contact */
+    .contact-box {
+      max-width: 700px;
+      background: #111827;
+      padding: 35px;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+    }
+
+    .contact-box p {
+      color: #9ca3af;
+      margin-bottom: 15px;
+    }
+
+    .contact-box a {
+      color: #60a5fa;
+      text-decoration: none;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 30px;
+      border-top: 1px solid #1f2937;
+      color: #6b7280;
+    }
+
+    /* Mobile */
+    @media (max-width: 700px) {
+      nav {
+        padding: 15px 5%;
+      }
+
+      nav ul {
+        gap: 12px;
+        font-size: 0.85rem;
+      }
+
+      section {
+        padding: 80px 6%;
+      }
+
+      #home {
+        padding-left: 6%;
+        padding-right: 6%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">Shreyas.</div>
+
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- Hero -->
+  <section id="home">
+    <div class="hero">
+      <span>Hello, I'm</span>
+
+      <h1>Shreyas<br>
+        <strong>Computer Science Student.</strong>
+      </h1>
+
+      <p>
+        I'm a 3rd-year B.Tech Computer Science and Engineering student
+        interested in technology, programming, and building useful digital
+        experiences.
+      </p>
+
+      <div class="buttons">
+        <a href="#projects" class="btn primary">View My Work</a>
+        <a href="mailto:shre@gmail.com" class="btn secondary">Contact Me</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- About -->
+  <section id="about">
+    <h2 class="section-title">About Me</h2>
+
+    <div class="about">
+      <p>
+        I'm Shreyas, a 3rd-year B.Tech Computer Science and Engineering
+        student. I enjoy learning about software development, solving
+        programming problems, and exploring new technologies.
+      </p>
+
+      <br>
+
+      <p>
+        I'm currently focused on strengthening my technical skills and
+        working on projects that help me turn ideas into practical solutions.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- Skills -->
+  <section id="skills">
+    <h2 class="section-title">Skills</h2>
+
+    <div class="skills">
+      <div class="skill">C / C++</div>
+      <div class="skill">Java</div>
+      <div class="skill">Python</div>
+      <div class="skill">HTML</div>
+      <div class="skill">CSS</div>
+      <div class="skill">JavaScript</div>
+      <div class="skill">Git & GitHub</div>
+      <div class="skill">Data Structures</div>
+      <div class="skill">Problem Solving</div>
+    </div>
+  </section>
+
+
+  <!-- Projects -->
+  <section id="projects">
+    <h2 class="section-title">Projects</h2>
+
+    <div class="projects">
+
+      <div class="project">
+        <h3>Project One</h3>
+        <p>
+          Add a short description of one of your college or personal
+          projects here.
+        </p>
+        <a href="#" target="_blank">View Project →</a>
+      </div>
+
+      <div class="project">
+        <h3>Project Two</h3>
+        <p>
+          Describe another project, application, website, or technical
+          experiment you have built.
+        </p>
+        <a href="#" target="_blank">View Project →</a>
+      </div>
+
+      <div class="project">
+        <h3>Project Three</h3>
+        <p>
+          Add your latest or most interesting project and explain what
+          problem it solves.
+        </p>
+        <a href="#" target="_blank">View Project →</a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2 class="section-title">Let's Connect</h2>
+
+    <div class="contact-box">
+      <p>
+        Interested in connecting, collaborating, or discussing technology?
+        Feel free to reach out.
+      </p>
+
+      <p>
+        📧 <a href="mailto:shre@gmail.com">shre@gmail.com</a>
+      </p>
+    </div>
+  </section>
+
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Shreyas. Built with HTML & CSS.</p>
+  </footer>
+
+</body>
+</html>
